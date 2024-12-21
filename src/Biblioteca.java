@@ -34,4 +34,20 @@ public class Biblioteca {
                         }
                 }
         }
+        public Usuario buscarUsuario(int id) {
+                for (Usuario usuario : usuarios) {
+                        if (usuario.getId() == id)
+                                return usuario;
+                }
+                System.out.println("Usuário não encontrado.");
+                return null;
+        }
+        public Livro buscarLivro(String isbn) {
+                for (Livro livro : livros) {
+                        if (livro.getIsbn().equals(isbn))
+                                return livro;
+                }
+                System.out.println("Livro não encontrado.");
+                return null;
+        }
 }
