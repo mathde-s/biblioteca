@@ -21,7 +21,15 @@ public class Biblioteca {
         }
 
         public void realizarEmprestimo (String isbn,int idUsuario){
-                this.livros.remove(idUsuario);
+                Livro livro = buscarLivro(isbn);
+                Usuario usuario = buscarUsuario(idUsuario);
+
+                if (livro.isDisponivel() && usuario.getLivrosEmprestados().size() < 3) {
+                        livro.emprestar();
+                        usuario.adicionarLivro(livro);
+                } else {
+                        System.out.println("Empréstimo não pode ser realizado.");
+                }
         }
         public void realizarDevolucao(String isbn, int idUsuario){
 
