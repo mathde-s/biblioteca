@@ -1,14 +1,25 @@
 import java.util.ArrayList;
 
-public class Usuarios {
+public class Usuario {
     private String nome;
     private int id;
     private ArrayList<Livro> livrosEmprestados;
 
-    public Usuarios(String nome, int id, ArrayList<Livro> livrosEmprestados){
+    public Usuario(String nome, int id){
         this.nome = nome;
         this.id = id;
-        this.livrosEmprestados = livrosEmprestados;
+        this.livrosEmprestados = new ArrayList<>();
+    }
+    public String getNome() {
+        return nome;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public ArrayList<Livro> getLivrosEmprestados() {
+        return livrosEmprestados;
     }
 
     public void exibirDetalhes(){
@@ -17,7 +28,10 @@ public class Usuarios {
         System.out.println("livros emprestados: "+livrosEmprestados);
     }
     public void adicionarLivro(Livro livro){
-        livrosEmprestados.add(livro);
+        if(livrosEmprestados.size() < 3)
+            livrosEmprestados.add(livro);
+        else
+            System.out.println("o limite de livros é 3");
     }
     public void removerLivro(Livro livro){
         livrosEmprestados.remove(livro);
