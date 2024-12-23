@@ -32,7 +32,14 @@ public class Biblioteca {
                 }
         }
         public void realizarDevolucao(String isbn, int idUsuario){
-
+                Livro livro = buscarLivro(isbn);
+                Usuario usuario = buscarUsuario(idUsuario);
+                if (usuario.getLivrosEmprestados().contains(livro)) {
+                        livro.devolver();
+                        usuario.removerLivro(livro);
+                } else {
+                        System.out.println("ocorreu um erro ao devolver");
+                }
         }
         public void exibirLivrosDisponiveis() {
                 System.out.println("Livros disponíveis:");
